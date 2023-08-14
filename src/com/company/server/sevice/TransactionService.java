@@ -19,8 +19,7 @@ public class  TransactionService {
         }catch (Exception e){
             e.printStackTrace();
         }
-        if (!(sender.getValidTime().getYear()>=LocalDate.now().getYear() &&
-        sender.getValidTime().getMonth().getValue()>=LocalDate.now().getMonthValue())) {
+        if (sender.getValidTime().isAfter(LocalDate.now())) {
             client.addHistoryList(new UserPaymentHistory(sender,taker,new BigDecimal(0),sum, "",false));
             return false;
         }
