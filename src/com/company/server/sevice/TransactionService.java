@@ -19,7 +19,7 @@ public class  TransactionService {
         }catch (Exception e){
             e.printStackTrace();
         }
-        if (sender.getValidTime().isAfter(LocalDate.now())) {
+        if (sender.getValidTime().isBefore(LocalDate.now())) {
             client.addHistoryList(new UserPaymentHistory(sender,taker,new BigDecimal(0),sum, "",false));
             return false;
         }
